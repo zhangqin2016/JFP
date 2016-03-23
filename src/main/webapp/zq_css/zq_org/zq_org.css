@@ -1,0 +1,26 @@
+.treeNodeDept .x-tree-icon-parent{
+	background:transparent url(../../zq_img/zq_org/dept.png);
+	background-repeat: no-repeat;
+}
+.treeNodeOrg .x-tree-icon-parent{
+	background:transparent url(../../zq_img/zq_org/org.png);
+	background-repeat: no-repeat;
+}
+.treeNodeRole .x-tree-icon-parent{
+	background:transparent url(../../zq_img/zq_org/role.png);
+	background-repeat: no-repeat;
+}
+
+.treeNodeRoleMan .x-tree-icon-leaf{
+	background:transparent url(../../zq_img/zq_org/role_man.png);
+	background-repeat: no-repeat;
+}
+
+.treeNodeUser .x-tree-icon-leaf{
+	background:transparent url(../../zq_img/zq_org/user.png);
+	background-repeat: no-repeat;
+}
+.treeNodeComp .x-tree-icon-parent{
+	background:transparent url(../../zq_img/zq_org/company.png);
+	background-repeat: no-repeat;
+}
