@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.MetadataMapMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.MetadataMap" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="metadata_id" property="metadataId" jdbcType="CHAR" />
+    <result column="column_name" property="columnName" jdbcType="CHAR" />
+    <result column="column_title" property="columnTitle" jdbcType="CHAR" />
+    <result column="column_type" property="columnType" jdbcType="CHAR" />
+    <result column="column_length" property="columnLength" jdbcType="CHAR" />
+    <result column="order_index" property="orderIndex" jdbcType="DECIMAL" />
+    <result column="default_value" property="defaultValue" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, metadata_id, column_name, column_title, column_type, column_length, order_index, 
+    default_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_metadata_map
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zq_metadata_map
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.MetadataMap" >
+    insert into zq_metadata_map (id, metadata_id, column_name, 
+      column_title, column_type, column_length, 
+      order_index, default_value)
+    values (#{id,jdbcType=CHAR}, #{metadataId,jdbcType=CHAR}, #{columnName,jdbcType=CHAR}, 
+      #{columnTitle,jdbcType=CHAR}, #{columnType,jdbcType=CHAR}, #{columnLength,jdbcType=CHAR}, 
+      #{orderIndex,jdbcType=DECIMAL}, #{defaultValue,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.MetadataMap" >
+    insert into zq_metadata_map
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="metadataId != null" >
+        metadata_id,
+      </if>
+      <if test="columnName != null" >
+        column_name,
+      </if>
+      <if test="columnTitle != null" >
+        column_title,
+      </if>
+      <if test="columnType != null" >
+        column_type,
+      </if>
+      <if test="columnLength != null" >
+        column_length,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+      <if test="defaultValue != null" >
+        default_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="metadataId != null" >
+        #{metadataId,jdbcType=CHAR},
+      </if>
+      <if test="columnName != null" >
+        #{columnName,jdbcType=CHAR},
+      </if>
+      <if test="columnTitle != null" >
+        #{columnTitle,jdbcType=CHAR},
+      </if>
+      <if test="columnType != null" >
+        #{columnType,jdbcType=CHAR},
+      </if>
+      <if test="columnLength != null" >
+        #{columnLength,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        #{defaultValue,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.MetadataMap" >
+    update zq_metadata_map
+    <set >
+      <if test="metadataId != null" >
+        metadata_id = #{metadataId,jdbcType=CHAR},
+      </if>
+      <if test="columnName != null" >
+        column_name = #{columnName,jdbcType=CHAR},
+      </if>
+      <if test="columnTitle != null" >
+        column_title = #{columnTitle,jdbcType=CHAR},
+      </if>
+      <if test="columnType != null" >
+        column_type = #{columnType,jdbcType=CHAR},
+      </if>
+      <if test="columnLength != null" >
+        column_length = #{columnLength,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=DECIMAL},
+      </if>
+      <if test="defaultValue != null" >
+        default_value = #{defaultValue,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.MetadataMap" >
+    update zq_metadata_map
+    set metadata_id = #{metadataId,jdbcType=CHAR},
+      column_name = #{columnName,jdbcType=CHAR},
+      column_title = #{columnTitle,jdbcType=CHAR},
+      column_type = #{columnType,jdbcType=CHAR},
+      column_length = #{columnLength,jdbcType=CHAR},
+      order_index = #{orderIndex,jdbcType=DECIMAL},
+      default_value = #{defaultValue,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

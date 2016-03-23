@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.OrgMembershipMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.OrgMembership" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="user_account" property="userAccount" jdbcType="CHAR" />
+    <result column="dept_id" property="deptId" jdbcType="CHAR" />
+    <result column="role_id" property="roleId" jdbcType="CHAR" />
+    <result column="dept_manager" property="deptManager" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_account, dept_id, role_id, dept_manager
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_org_membership
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zq_org_membership
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.OrgMembership" >
+    insert into zq_org_membership (id, user_account, dept_id, 
+      role_id, dept_manager)
+    values (#{id,jdbcType=CHAR}, #{userAccount,jdbcType=CHAR}, #{deptId,jdbcType=CHAR}, 
+      #{roleId,jdbcType=CHAR}, #{deptManager,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.OrgMembership" >
+    insert into zq_org_membership
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userAccount != null" >
+        user_account,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="deptManager != null" >
+        dept_manager,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="userAccount != null" >
+        #{userAccount,jdbcType=CHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=CHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=CHAR},
+      </if>
+      <if test="deptManager != null" >
+        #{deptManager,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.OrgMembership" >
+    update zq_org_membership
+    <set >
+      <if test="userAccount != null" >
+        user_account = #{userAccount,jdbcType=CHAR},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=CHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=CHAR},
+      </if>
+      <if test="deptManager != null" >
+        dept_manager = #{deptManager,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.OrgMembership" >
+    update zq_org_membership
+    set user_account = #{userAccount,jdbcType=CHAR},
+      dept_id = #{deptId,jdbcType=CHAR},
+      role_id = #{roleId,jdbcType=CHAR},
+      dept_manager = #{deptManager,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

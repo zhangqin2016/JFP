@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="data_base_common">
+	<select id="getSequenceValue" resultType="int" parameterType="string" >
+		select sequence_value from sys_sequence where sequence_name=#{sequence_name}
+ 	 </select>
+
+	<insert id="insertSequence" parameterType="string">
+	   insert into sys_sequence(sequence_name,sequence_value,sequence_step) values(#{sequence_name},1,1)
+	</insert>
+	
+	<update id="updateSequence" parameterType="string"  >
+	update sys_sequence  set sequence_value= sequence_value+sequence_step where  sequence_name=#{sequence_name}
+	</update>
+	
+	 <update id="runUpdateSql" parameterType="String">
+ 		${value}
+ 	 </update>
+ 	 <select id="runSelectFieldSql" resultType="Object" parameterType="String">
+ 	 ${value}
+ 	 </select>
+</mapper>

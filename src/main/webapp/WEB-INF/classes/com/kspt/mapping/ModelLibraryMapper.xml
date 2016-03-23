@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.ModelLibraryMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.ModelLibrary" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="model_name" property="modelName" jdbcType="CHAR" />
+    <result column="order_index" property="orderIndex" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, model_name, order_index
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_model_library
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zq_model_library
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.ModelLibrary" >
+    insert into zq_model_library (id, model_name, order_index
+      )
+    values (#{id,jdbcType=CHAR}, #{modelName,jdbcType=CHAR}, #{orderIndex,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.ModelLibrary" >
+    insert into zq_model_library
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="modelName != null" >
+        model_name,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="modelName != null" >
+        #{modelName,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.ModelLibrary" >
+    update zq_model_library
+    <set >
+      <if test="modelName != null" >
+        model_name = #{modelName,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.ModelLibrary" >
+    update zq_model_library
+    set model_name = #{modelName,jdbcType=CHAR},
+      order_index = #{orderIndex,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

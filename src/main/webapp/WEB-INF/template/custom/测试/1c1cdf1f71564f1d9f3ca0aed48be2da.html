@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"/>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="/chajian/bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+<link href="/chajian/uploadify/uploadify.css" rel="stylesheet" type="text/css"  /> 
+<script type="text/javascript" src="/zq_js/jquery/jquery-1.9.1.js"></script>
+<title></title>
+</head>
+<body> <nav   class="navbar navbar-default navbar-fixed-top site-navbar" >
+  <div class="container"> 
+ <div class="navbar-header"> 
+   <a class="navbar-brand" href="#">表单信息</a> 
+   </div> 
+      </div>
+   </div>
+ </div>
+  </nav>
+
+<form name="zq_form"  id="zq_form" class="form-horizontal" style="margin-top: 60px;"> 
+
+<div class="form-group col-sm-3" >
+ <label for="xm" class="col-sm-4 control-label">姓名</label>
+ <div class="col-sm-8">${xm}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="yx" class="col-sm-4 control-label">邮箱</label>
+ <div class="col-sm-8">${yx}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="fcdz" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${fcdz}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="create_user" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${create_user}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="id" class="col-sm-4 control-label">11</label>
+ <div class="col-sm-8">${id}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="dh" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${dh}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="update_date" class="col-sm-4 control-label">更新日期</label>
+ <div class="col-sm-8">${update_date}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="fczbh" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${fczbh}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="yhm" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${yhm}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="update_user" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${update_user}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="sfzh" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${sfzh}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="fczzp" class="col-sm-4 control-label">11</label>
+ <div class="col-sm-8">${fczzp}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="create_date" class="col-sm-4 control-label">创建日期</label>
+ <div class="col-sm-8">${create_date}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="sfzzp" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${sfzzp}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="qtfj" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${qtfj}</div></div>
+<div class="form-group col-sm-3" >
+ <label for="spkgm" class="col-sm-4 control-label">1</label>
+ <div class="col-sm-8">${spkgm}</div></div>
+<div class="form-group col-sm-3" style="padding-bottom: 60px;">
+ <label for="bind_id" class="col-sm-4 control-label">22221</label>
+ <div class="col-sm-8">${bind_id}</div></div>
+
+</form>
+<script type="text/javascript" src="/chajian/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/chajian/uploadify/jquery.uploadify.js"></script>
+<script type="text/javascript" src="/chajian/bootstrap-3.3.5/bootstrap3-validation.js"></script>
+<script type="text/javascript" src="/chajian/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/chajian/headroom.js-master/src/Headroom.js"></script>
+<script type="text/javascript"> 
+	$(function($) { 
+	$("#zq_form").validation();
+});                                           
+function saveZqForm(){  
+if ($("#zq_form").valid() == false) { 
+	return false;                        
+}                                     
+var formObject=new Object();formObject.xm=(zq_form.xm.value==''?null:zq_form.xm.value); 
+formObject.yx=(zq_form.yx.value==''?null:zq_form.yx.value); 
+formObject.fcdz=(zq_form.fcdz.value==''?null:zq_form.fcdz.value); 
+formObject.create_user=(zq_form.create_user.value==''?null:zq_form.create_user.value); 
+formObject.id=(zq_form.id.value==''?null:zq_form.id.value); 
+formObject.dh=(zq_form.dh.value==''?null:zq_form.dh.value); 
+formObject.update_date=(zq_form.update_date.value==''?null:zq_form.update_date.value); 
+formObject.fczbh=(zq_form.fczbh.value==''?null:zq_form.fczbh.value); 
+formObject.yhm=(zq_form.yhm.value==''?null:zq_form.yhm.value); 
+formObject.update_user=(zq_form.update_user.value==''?null:zq_form.update_user.value); 
+formObject.sfzh=(zq_form.sfzh.value==''?null:zq_form.sfzh.value); 
+formObject.fczzp=(zq_form.fczzp.value==''?null:zq_form.fczzp.value); 
+formObject.create_date=(zq_form.create_date.value==''?null:zq_form.create_date.value); 
+formObject.sfzzp=(zq_form.sfzzp.value==''?null:zq_form.sfzzp.value); 
+formObject.qtfj=(zq_form.qtfj.value==''?null:zq_form.qtfj.value); 
+formObject.spkgm=(zq_form.spkgm.value==''?null:zq_form.spkgm.value); 
+formObject.bind_id=(zq_form.bind_id.value==''?null:zq_form.bind_id.value); 
+var formObjectJson = JSON.stringify(formObject);                 
+$.post("/run/form/save.zq", {  
+	formObjectJson :formObjectJson,                                 
+	form_id :'1c1cdf1f71564f1d9f3ca0aed48be2da'                                 
+}, function(data) {                           
+	alert(data);                                 
+});                                           
+}                                         
+</script>  
+ <nav   class="navbar navbar-default navbar-fixed-bottom site-navbar" >
+  <div class="container" style="padding-top:10px;padding-bottom:10px;">
+     <div class="collapse navbar-collapse" id="navbar">
+          <div class="nav navbar-nav navbar-right">
+    <span><a href="#" class="btn btn-success"  onclick='saveZqForm()'>保存 </a>           </span>
+    <span><a href="#"   class="btn btn-info" onclick='window.close();'>关闭</a>           </span>
+      </div>
+   </div>
+ </div>
+  </nav>
+</body>

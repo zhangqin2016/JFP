@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zq_metadatamap">
+<sql id="metadataMapSqlField">
+id,metadata_id,column_name,column_title,column_length,column_type,order_index,default_value
+</sql>
+	<select id="selectFiledByTableId" resultType="MetadataMapModel" parameterType="string" >
+		select <include refid="metadataMapSqlField"/> from zq_metadata_map where metadata_id=#{metadata_id} order by order_index
+ 	 </select>
+ 	 	<select id="selectFiledById" resultType="MetadataMapModel" parameterType="string" >
+		select <include refid="metadataMapSqlField"/> from zq_metadata_map where id=#{id} order by order_index
+ 	 </select>
+ 	 <insert id="insertTableField" parameterType="MetadataMapModel">
+ 	 insert into zq_metadata_map(<include refid="metadataMapSqlField"/>) values(#{id},#{metadata_id},#{column_name},#{column_title},#{column_length},#{column_type},#{order_index},#{default_value})
+ 	 </insert>
+ 	 <delete id="deleteTableField" parameterType="map" >
+ 	 delete from zq_metadata_map where 1=1
+ 	 <if test="id != null">  
+       and id = #{id}  
+    	 </if> 
+    	  <if test="metadata_id != null">  
+       and metadata_id = #{metadata_id}  
+    	 </if> 
+ 	 </delete>
+ 	 <update id="updateTableField" parameterType="MetadataMapModel">
+ 	 update zq_metadata_map set column_title=#{column_title},column_length=#{column_length},column_type=#{column_type},default_value=#{default_value} where id=#{id}
+ 	 </update>
+ 	 <select id="getmetadataByColumnName" parameterType="MetadataMapModel" resultType="int">
+ 	 select count(ID) from zq_metadata_map where metadata_id=#{metadata_id} and column_name=#{column_name}
+ 	 </select>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.FormMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.Form" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="model_lib_id" property="modelLibId" jdbcType="CHAR" />
+    <result column="master" property="master" jdbcType="CHAR" />
+    <result column="template_name" property="templateName" jdbcType="CHAR" />
+    <result column="order_index" property="orderIndex" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, model_lib_id, master, template_name, order_index, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_form
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zq_form
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.Form" >
+    insert into zq_form (id, name, model_lib_id, 
+      master, template_name, order_index, 
+      type)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{modelLibId,jdbcType=CHAR}, 
+      #{master,jdbcType=CHAR}, #{templateName,jdbcType=CHAR}, #{orderIndex,jdbcType=BIGINT}, 
+      #{type,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.Form" >
+    insert into zq_form
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="modelLibId != null" >
+        model_lib_id,
+      </if>
+      <if test="master != null" >
+        master,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="modelLibId != null" >
+        #{modelLibId,jdbcType=CHAR},
+      </if>
+      <if test="master != null" >
+        #{master,jdbcType=CHAR},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.Form" >
+    update zq_form
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="modelLibId != null" >
+        model_lib_id = #{modelLibId,jdbcType=CHAR},
+      </if>
+      <if test="master != null" >
+        master = #{master,jdbcType=CHAR},
+      </if>
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.Form" >
+    update zq_form
+    set name = #{name,jdbcType=CHAR},
+      model_lib_id = #{modelLibId,jdbcType=CHAR},
+      master = #{master,jdbcType=CHAR},
+      template_name = #{templateName,jdbcType=CHAR},
+      order_index = #{orderIndex,jdbcType=BIGINT},
+      type = #{type,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

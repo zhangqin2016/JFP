@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.OrgRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.OrgRole" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="role_group" property="roleGroup" jdbcType="CHAR" />
+    <result column="role_name" property="roleName" jdbcType="CHAR" />
+    <result column="order_index" property="orderIndex" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_group, role_name, order_index
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_org_role
+    where id = #{id,jdbcType=CHAR}
+  </select>
+    <select id="selectAllGroup" resultMap="BaseResultMap" >
+    select  <include refid="Base_Column_List" />  from zq_org_role group by role_group
+  </select>
+    <select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.kspt.model.OrgRole" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_org_role
+    where 1=1
+      <if test="roleGroup != null" >
+     and   role_group=#{roleGroup}
+      </if>
+      <if test="roleName != null" >
+      and  role_name=#{roleName}
+      </if>
+      <if test="orderIndex != null" >
+      and  order_index=#{orderIndex}
+      </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zq_org_role
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.OrgRole" >
+    insert into zq_org_role (id, role_group, role_name, 
+      order_index)
+    values (#{id,jdbcType=CHAR}, #{roleGroup,jdbcType=CHAR}, #{roleName,jdbcType=CHAR}, 
+      #{orderIndex,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.OrgRole" >
+    insert into zq_org_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleGroup != null" >
+        role_group,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="roleGroup != null" >
+        #{roleGroup,jdbcType=CHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.OrgRole" >
+    update zq_org_role
+    <set >
+      <if test="roleGroup != null" >
+        role_group = #{roleGroup,jdbcType=CHAR},
+      </if>
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.OrgRole" >
+    update zq_org_role
+    set role_group = #{roleGroup,jdbcType=CHAR},
+      role_name = #{roleName,jdbcType=CHAR},
+      order_index = #{orderIndex,jdbcType=BIGINT}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

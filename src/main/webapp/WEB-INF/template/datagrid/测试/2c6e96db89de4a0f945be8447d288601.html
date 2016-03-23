@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'> 
+<meta http-equiv='X-UA-Compatible' content='IE=edge'> 
+<link rel='stylesheet' href='/chajian/jquery-bootgrid-master/demo/css/bootstrap.css' />   
+ <link rel='stylesheet' href='/chajian/jquery-bootgrid-master/dist/jquery.bootgrid.css' />
+ <link rel='stylesheet' href='/chajian/craftpip-jquery-confirm-00f7956/css/jquery-confirm.css' />
+ <script type='text/javascript' src='/chajian/jquery-bootgrid-master/demo/js/moderniz.2.8.1.js'></script><title></title>
+</head> 
+<body> 
+ <nav   class="navbar navbar-default navbar-static-top" >
+  <div class="container"> 
+ <div class="navbar-header"> 
+   <a class="navbar-brand" href="#">房产信息</a> 
+   </div> 
+ </div>
+  </nav>
+<div class='container-fluid'  >
+<div id='queryDiv'> 
+<div class='row' > 
+ <div class='col-md-12'>  
+<form name='queryForm' class='form-inline'> 
+<div class='form-group' style='width:45%;margin-top:10px;'> <label title='姓名' style='width:100px;' for='xm'>姓名：</label> <input onkeyup='enterToQuery(event);' type='text' class='form-control' id='xm' name='xm' placeholder=''> </div> 
+<div class='form-group' style='width:45%;margin-top:10px;'> <label title='邮箱' style='width:100px;' for='yx'>邮箱：</label> <input onkeyup='enterToQuery(event);' type='text' class='form-control' id='yx' name='yx' placeholder=''> </div> 
+</form>
+</div>
+</div>
+<div class='row' style='margin:10px;'> 
+ <div class='col-md-5'>  
+</div>
+ <div class='col-md-1'>  
+ <button type='button' class='btn btn-default' id='querySearch'><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查询</button> 
+</div>
+ <div class='col-md-1'>  
+ <button type='button' class='btn btn-default' id='reset'><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> 重置</button> 
+</div>
+ <div class='col-md-5'>  
+</div>
+</div>
+</div>
+<div class='row'> 
+ <div class='col-md-12' style="border-top: 1px solid #ddd">  
+ <table class='table table-condensed table-hover table-striped' id='datalist_2c6e96db89de4a0f945be8447d288601' style="border-top: 2px solid #ddd"> 
+ <thead> 
+<tr> 
+<th data-column-id='xm'    >姓名</th> 
+<th data-column-id='yx'    >邮箱</th> 
+<th data-column-id='update_date'    >更新日期</th> 
+<th data-column-id='create_date'    >创建日期</th> 
+<th data-column-id='fcdz'    >房产地址</th> 
+<th data-column-id='sfzzp'    >身份证号</th> 
+<th data-column-id='create_user'    >创建人</th> 
+<th data-column-id='id' data-identifier='true' data-type='numeric'  data-visible='false' >id</th> 
+</tr> 
+</thead> 
+ </table> 
+</div>
+</div>
+</div>
+<script type='text/javascript' src='/chajian/jquery-bootgrid-master/lib/jquery-1.11.1.min.js'></script> 
+<script type='text/javascript' src='/chajian/jquery-bootgrid-master/demo/js/bootstrap.js'></script>
+<script type='text/javascript' src='/chajian/jquery-bootgrid-master/dist/jquery.bootgrid.js'></script>  
+ <script type='text/javascript' src='/zq_js/run/run.js'></script>
+ <script type='text/javascript' src='/chajian/craftpip-jquery-confirm-00f7956/js/jquery-confirm.js'></script>
+ <script type="text/javascript">
+ function enterToQuery(event){ 
+   var e = event || window.event || arguments.callee.caller.arguments[0];
+ 	if(e.keyCode == 13){ 
+   $('#querySearch').click(); 
+ } 
+ } 
+function openAddFormWindow(){ 
+ window.open("/run/form/page.zq?datalistId=2c6e96db89de4a0f945be8447d288601","_blank"); 
+ } 
+ $(function($){   
+ $('#reset').click(function(){  
+ $('#queryDiv').find('input,select').val(''); 
+  }); 
+ $('#querySearch').click(function(){
+ $("#datalist_2c6e96db89de4a0f945be8447d288601").bootgrid('reload');  
+  }); 
+ function getQueryString(){
+var objQuery=new Object(); 
+objQuery.query_577f94f26b684783a2650663e6d9c3bb=$('#xm').val(); 
+objQuery.query_49d5ae8e3fb54a88b61d702c66dbaaec=$('#yx').val(); 
+var queryString=JSON.stringify(objQuery); 
+ return queryString; 
+  } 
+$("#datalist_2c6e96db89de4a0f945be8447d288601").bootgrid({ 
+ajax: true,   
+selection: true,  
+multiSelect: true, 
+rowSelect: true,
+keepSelection: true, 
+post: function ()  
+{  
+   return {  
+   datalist_id: "2c6e96db89de4a0f945be8447d288601" ,
+   querys:getQueryString()
+   };  
+}, 
+url: "/run/form/bootgrid/json.zq"   
+}).on("loaded.rs.jquery.bootgrid", function (e){;
+$("#datalist_2c6e96db89de4a0f945be8447d288601-header").find("#datalist_2c6e96db89de4a0f945be8447d288601-header_button").html(" <button type='button' onclick=\"openAddFormWindow('2c6e96db89de4a0f945be8447d288601')\" class='btn btn-default'>新增</button>  <button type='button' onclick=\"deleteData('2c6e96db89de4a0f945be8447d288601');\" class='btn btn-default'>d</button> ") ;  
+ });   
+ });   
+ </script>
+</body>
+</html>

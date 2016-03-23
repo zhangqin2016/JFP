@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"/>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="/chajian/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+<link href="/chajian/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="/zq_js/jquery/jquery-1.7.1.min.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script><script type="text/javascript" src="/chajian/uploadify/jquery.uploadify.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/bootstrap3-validation.js"></script><script type="text/javascript" src="/chajian/My97DatePicker/WdatePicker.js"></script>
+<title></title>
+</head>
+<body>
+<form name="zq_form" id="zq_form">
+<table class="table table-bordered">
+</table>
+<button type='button' onclick='saveZqForm()'>保存</button></form><script type="text/javascript"> 
+	$(function() { 
+	$("#zq_form").validation();
+});                                           
+function saveZqForm(){  
+if ($("#zq_form").valid() == false) { 
+	alert('填写信息不完整。');                   
+	return false;                        
+}                                     
+var formObject=new Object();var formObjectJson = JSON.stringify(formObject);                 
+$.post("/run/form/save.zq", {  
+	formObjectJson :formObjectJson,                                 
+	form_id :'65b58ef6c16c42618dfdae81bcb1dc0a'                                 
+}, function(data) {                           
+	alert(data);                                 
+});                                           
+}                                         
+</script>  
+
+</body>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'> 
+<meta http-equiv='X-UA-Compatible' content='IE=edge'> 
+<link rel='stylesheet' href='/chajian/jquery-bootgrid-master/demo/css/bootstrap.css' />   
+ <link rel='stylesheet' href='/chajian/jquery-bootgrid-master/dist/jquery.bootgrid.css' />
+ <link rel='stylesheet' href='/chajian/craftpip-jquery-confirm-00f7956/css/jquery-confirm.css' />
+ <script type='text/javascript' src='/chajian/jquery-bootgrid-master/demo/js/moderniz.2.8.1.js'></script><title></title>
+</head> 
+<body> 
+ <nav   class="navbar navbar-default navbar-static-top" >
+  <div class="container"> 
+ <div class="navbar-header"> 
+   <a class="navbar-brand" href="#">1</a> 
+   </div> 
+ </div>
+  </nav>
+<div class='container-fluid'  >
+<div class='row'> 
+ <div class='col-md-12' style="border-top: 1px solid #ddd">  
+ <table class='table table-condensed table-hover table-striped' id='datalist_1b7459843592456d8ee6f384fde444eb' style="border-top: 2px solid #ddd"> 
+ <thead> 
+<tr> 
+</tr> 
+</thead> 
+ </table> 
+</div>
+</div>
+</div>
+<script type='text/javascript' src='/chajian/jquery-bootgrid-master/lib/jquery-1.11.1.min.js'></script> 
+<script type='text/javascript' src='/chajian/jquery-bootgrid-master/demo/js/bootstrap.js'></script>
+<script type='text/javascript' src='/chajian/jquery-bootgrid-master/dist/jquery.bootgrid.js'></script>  
+ <script type='text/javascript' src='/zq_js/run/run.js'></script>
+ <script type='text/javascript' src='/chajian/craftpip-jquery-confirm-00f7956/js/jquery-confirm.js'></script>
+ <script type="text/javascript">
+ function enterToQuery(event){ 
+   var e = event || window.event || arguments.callee.caller.arguments[0];
+ 	if(e.keyCode == 13){ 
+   $('#querySearch').click(); 
+ } 
+ } 
+function openAddFormWindow(){ 
+ window.open("/run/form/page.zq?datalistId=1b7459843592456d8ee6f384fde444eb","_blank"); 
+ } 
+ $(function($){   
+ $('#reset').click(function(){  
+ $('#queryDiv').find('input,select').val(''); 
+  }); 
+ $('#querySearch').click(function(){  
+ $("#datalist_1b7459843592456d8ee6f384fde444eb").bootgrid('reload');  
+  }); 
+ function getQueryString(){  
+var queryString; return queryString; 
+  } 
+$("#datalist_1b7459843592456d8ee6f384fde444eb").bootgrid({ 
+ajax: true,   
+selection: true,  
+multiSelect: true, 
+rowSelect: true,
+keepSelection: true, 
+post: function ()  
+{  
+   return {  
+   datalist_id: "1b7459843592456d8ee6f384fde444eb" ,
+   querys:getQueryString()
+   };  
+}, 
+url: "/run/form/bootgrid/json.zq"   
+}).on("loaded.rs.jquery.bootgrid", function (e){;
+$("#datalist_1b7459843592456d8ee6f384fde444eb-header").find("#datalist_1b7459843592456d8ee6f384fde444eb-header_button").html("") ;  
+ });   
+ });   
+ </script>
+</body>
+</html>

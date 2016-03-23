@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="zq_form_er_er">
+<sql id="form_er">
+ id,form_id,metadata_id,er_type,page_size,grid_order,er_layer,parent_er_id,order_index,grid_height,grid_title,table_name
+</sql>
+ <select id="getFormEr" resultType="FormEntityRelationshipModel" parameterType="map" >
+		select <include refid="form_er"/> from zq_form_er where 1=1
+		 <if test="metadata_id != null">  
+       and metadata_id = #{metadata_id}  
+    	 </if> 
+    	 <if test="form_id != null">  
+       and form_id = #{form_id}  
+    	 </if> 
+    	 <if test="er_type != null">  
+       and er_type = #{er_type}  
+    	 </if> 
+    	  <if test="table_name != null">  
+       and table_name = #{table_name}  
+    	 </if> 
+    	     	  <if test="id != null">  
+       and id = #{id}  
+    	 </if>
+</select>
+ 	<select id="queryCount" resultType="int" parameterType="map" >
+		select count(ID) from zq_form_er where 1=1 
+		 <if test="form_id != null">  
+       and form_id = #{form_id}  
+    	 </if> 
+		 <if test="metadata_id != null">  
+       and metadata_id = #{metadata_id}  
+    	 </if>  
+ 		<if test="er_type != null">  
+       and er_type = #{er_type}  
+    	 </if>  
+    	 <if test="parent_er_id != null">  
+       and parent_er_id = #{parent_er_id}  
+    	 </if> 
+    	 <if test="table_name != null">  
+       and table_name = #{table_name}  
+    	 </if> 
+ 	 </select>
+ 	 <insert id="insertFormER" parameterType="FormEntityRelationshipModel">
+ 	 insert into zq_form_er(<include refid="form_er"/>) values(#{id},#{form_id},#{metadata_id},#{er_type},#{page_size},#{grid_order},#{er_layer},#{parent_er_id},#{order_index},#{grid_height},#{grid_title},#{table_name}
+ 	 );
+ 	 </insert>
+ 	 <delete id="deleteFormERbyId" parameterType="String">
+ 	 delete from zq_form_er where id =#{id}
+ 	 </delete>
+</mapper>

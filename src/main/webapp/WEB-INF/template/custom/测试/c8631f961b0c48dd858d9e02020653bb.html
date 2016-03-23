@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"/>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="/chajian/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+<link href="/chajian/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="/zq_js/jquery/jquery-1.7.1.min.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script><script type="text/javascript" src="/chajian/uploadify/jquery.uploadify.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/bootstrap3-validation.js"></script>
+<title></title>
+</head>
+<body>
+<form name="zq_form" id="zq_form">
+<table class="table table-bordered">
+<tr>
+<td>电话</td><td><input type="text"  name= "dh"  id= "dh" value=""/></td>
+<td>年龄</td><td><input type="text"  name= "nl"  id= "nl" value=""/></td>
+</tr>
+<tr>
+<td>姓名</td><td><label></label></td>
+<td>婚姻状况</td><td><input type="text"  name= "hyzk"  id= "hyzk" value=""/></td>
+</tr>
+<tr>
+<td>生日</td><td><input type="text"  name= "sr"  id= "sr" value=""/></td>
+<td>每月收入</td><td><input type="text"  name= "mysr"  id= "mysr" value=""/></td>
+</tr>
+</table>
+<button type='button' onclick='saveZqForm()'>保存</button></form><script type="text/javascript"> 
+	$(function() { 
+	$("#zq_form").validation();
+});                                           
+function saveZqForm(){  
+if ($("#zq_form").valid() == false) { 
+	return false;                        
+}                                     
+var formObject=new Object();formObject.dh=zq_form.dh.value; 
+formObject.nl=zq_form.nl.value; 
+formObject.null=zq_form.null.value; 
+formObject.hyzk=zq_form.hyzk.value; 
+formObject.sr=zq_form.sr.value; 
+formObject.mysr=zq_form.mysr.value; 
+var formObjectJson = JSON.stringify(formObject);                 
+$.post("/run/form/save.zq", {  
+	formObjectJson :formObjectJson,                                 
+	form_id :'c8631f961b0c48dd858d9e02020653bb'                                 
+}, function(data) {                           
+	alert(data);                                 
+});                                           
+}                                         
+</script>  
+
+</body>

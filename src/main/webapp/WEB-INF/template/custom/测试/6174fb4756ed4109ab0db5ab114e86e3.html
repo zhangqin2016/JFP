@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"/>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="/chajian/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+<link href="/chajian/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="/zq_js/jquery/jquery-1.7.1.min.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script><script type="text/javascript" src="/chajian/uploadify/jquery.uploadify.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/bootstrap3-validation.js"></script>
+<title></title>
+</head>
+<body>
+<form name="zq_form" id="zq_form">
+<table class="table table-bordered">
+<tr>
+<td>身份证照片</td><td><input type="text" check-type='required' name= "sfzzp"  id= "sfzzp" value=""/></td>
+<td>邮箱</td><td><input type='hidden' name= 'yx'  id= 'yx'><input type='file' name= 'yx_file'  id= 'yx_file'><a href="javascript:$('#yx_file').uploadify('upload','*')">开始上传</a><script type="text/javascript"> 
+	$(function() { 
+	    $("#yx_file").uploadify({                 
+	        'auto'     : false,                       
+	        'swf'      : '/chajian/uploadify/uploadify.swf',  
+	        'uploader' : '/run/form/upload.zq' ,  
+	 'fileObjName' : 'file', 
+	   'buttonText' : '请选择文件', 
+	'onUploadSuccess' : function(file, data, response) {
+		$("#yx_file").after(data); 
+      }  
+	    });                                           
+	});                                                
+</script>  
+</td>
+</tr>
+<tr>
+<td>身份证号</td><td><input type="text"  name= "sfzh"  id= "sfzh" value=""/></td>
+<td>房产证编号</td><td><input type='hidden' name= 'fczbh'  id= 'fczbh'><input type='file' name= 'fczbh_file'  id= 'fczbh_file'><a href="javascript:$('#fczbh_file').uploadify('upload','*')">开始上传</a><script type="text/javascript"> 
+	$(function() { 
+	    $("#fczbh_file").uploadify({                 
+	        'auto'     : false,                       
+	        'swf'      : '/chajian/uploadify/uploadify.swf',  
+	        'uploader' : '/run/form/upload.zq' ,  
+	 'fileObjName' : 'file', 
+	   'buttonText' : '请选择文件', 
+	'onUploadSuccess' : function(file, data, response) {
+		$("#fczbh_file").after(data); 
+      }  
+	    });                                           
+	});                                                
+</script>  
+</td>
+</tr>
+<tr>
+<td>房产地址</td><td><input type="text"  name= "fcdz"  id= "fcdz" value=""/></td>
+<td>用户名</td><td><input type="text"  name= "yhm"  id= "yhm" value=""/></td>
+</tr>
+<tr>
+<td>房产证照片</td><td><input type='hidden' name= 'fczzp'  id= 'fczzp'><input type='file' name= 'fczzp_file'  id= 'fczzp_file'><a href="javascript:$('#fczzp_file').uploadify('upload','*')">开始上传</a><script type="text/javascript"> 
+	$(function() { 
+	    $("#fczzp_file").uploadify({                 
+	        'auto'     : false,                       
+	        'swf'      : '/chajian/uploadify/uploadify.swf',  
+	        'uploader' : '/run/form/upload.zq' ,  
+	 'fileObjName' : 'file', 
+	   'buttonText' : '请选择文件', 
+	'onUploadSuccess' : function(file, data, response) {
+		$("#fczzp_file").after(data); 
+      }  
+	    });                                           
+	});                                                
+</script>  
+</td>
+<td>电话</td><td><input type="text"  name= "dh"  id= "dh" value=""/></td>
+</tr>
+<tr>
+<td>是否可购买</td><td><input type="text"  name= "spkgm"  id= "spkgm" value=""/></td>
+<td>其他附件</td><td><input type="text"  name= "qtfj"  id= "qtfj" value=""/></td>
+</tr>
+<tr>
+<td>姓名</td><td colspan="3"><input type="text"  name= "xm"  id= "xm" value=""/></td>
+</table>
+<button type='button' onclick='saveZqForm()'>保存</button></form><script type="text/javascript"> 
+	$(function() { 
+	$("#zq_form").validation();
+});                                           
+function saveZqForm(){  
+if ($("#zq_form").valid() == false) { 
+	alert('填写信息不完整。');                   
+	return false;                        
+}                                     
+var formObject=new Object();formObject.sfzzp=zq_form.sfzzp.value; 
+formObject.yx=zq_form.yx.value; 
+formObject.sfzh=zq_form.sfzh.value; 
+formObject.fczbh=zq_form.fczbh.value; 
+formObject.fcdz=zq_form.fcdz.value; 
+formObject.yhm=zq_form.yhm.value; 
+formObject.fczzp=zq_form.fczzp.value; 
+formObject.dh=zq_form.dh.value; 
+formObject.spkgm=zq_form.spkgm.value; 
+formObject.qtfj=zq_form.qtfj.value; 
+formObject.xm=zq_form.xm.value; 
+var formObjectJson = JSON.stringify(formObject);                 
+$.post("/run/form/save.zq", {  
+	formObjectJson :formObjectJson,                                 
+	form_id :'6174fb4756ed4109ab0db5ab114e86e3'                                 
+}, function(data) {                           
+	alert(data);                                 
+});                                           
+}                                         
+</script>  
+
+</body>

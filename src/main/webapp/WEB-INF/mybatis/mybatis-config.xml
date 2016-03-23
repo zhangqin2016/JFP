@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="ModelLibrary" type="com.kspt.core.moxingku.pojo.ModelLibrary" />
+		<typeAlias alias="MetadataMapModel" type="com.kspt.core.moxingku.table.pojo.MetadataMapModel" />
+		<typeAlias alias="MetadataModel" type="com.kspt.core.moxingku.table.pojo.MetadataModel" />
+		<typeAlias alias="FormModel" type="com.kspt.core.moxingku.form.pojo.FormModel" />
+			<typeAlias alias="FormEntityRelationshipModel" type="com.kspt.core.moxingku.form.pojo.FormEntityRelationshipModel" />
+			<typeAlias alias="FormUIModel" type="com.kspt.core.moxingku.form.pojo.FormUIModel" />
+	</typeAliases>
+
+<!-- 	<mappers>
+		<mapper resource="com/kspt/portal/xml/common/DataCommon.xml" />
+		<mapper resource="com/kspt/portal/xml/CompanyModel.xml" />
+		<mapper resource="com/kspt/portal/xml/DepartmentModel.xml" />
+		<mapper resource="com/kspt/portal/xml/MemberShipModel.xml" />
+		<mapper resource="com/kspt/portal/xml/RoleModel.xml" />
+		<mapper resource="com/kspt/portal/xml/UserModel.xml" />
+		
+		<mapper resource="com/kspt/core/moxingku/xml/ModelLibrary.xml" />
+			<mapper resource="com/kspt/core/moxingku/table/xml/MetadataMapModel.xml" />
+			<mapper resource="com/kspt/core/moxingku/table/xml/MetadataModel.xml" />
+	</mappers> -->
+</configuration>

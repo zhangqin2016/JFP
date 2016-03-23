@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.OrgUserMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.OrgUser" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="dept_id" property="deptId" jdbcType="CHAR" />
+    <result column="role_id" property="roleId" jdbcType="CHAR" />
+    <result column="user_account" property="userAccount" jdbcType="CHAR" />
+    <result column="user_password" property="userPassword" jdbcType="CHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="dept_manager" property="deptManager" jdbcType="CHAR" />
+    <result column="user_tel" property="userTel" jdbcType="CHAR" />
+    <result column="user_fax" property="userFax" jdbcType="CHAR" />
+    <result column="user_mobile" property="userMobile" jdbcType="CHAR" />
+    <result column="user_mail" property="userMail" jdbcType="CHAR" />
+    <result column="order_index" property="orderIndex" jdbcType="BIGINT" />
+    <result column="user_code" property="userCode" jdbcType="CHAR" />
+    <result column="user_sex" property="userSex" jdbcType="CHAR" />
+    <result column="comp_id" property="compId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, dept_id, role_id, user_account, user_password, user_name, dept_manager, user_tel, 
+    user_fax, user_mobile, user_mail, order_index, user_code, user_sex, comp_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_org_user
+    where id = #{id,jdbcType=CHAR}
+  </select>
+    <select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.kspt.model.OrgUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from zq_org_user
+    where 1=1 
+     <if test="deptId != null" >
+       and dept_id=#{deptId}
+      </if>
+      <if test="roleId != null" >
+          and   role_id=#{roleId}
+      </if>
+      <if test="userAccount != null" >
+      and  user_account=#{userAccount}
+      </if>
+      <if test="userPassword != null" >
+     and  user_password=#{userPassword}
+      </if>
+      <if test="userName != null" >
+      and  user_name=#{userName}
+      </if>
+      <if test="deptManager != null" >
+     and  dept_manager=#{deptManager}
+      </if>
+      <if test="userTel != null" >
+     and    user_tel=#{userTel}
+      </if>
+      <if test="userFax != null" >
+      and   user_fax=#{userFax}
+      </if>
+      <if test="userMobile != null" >
+      and  user_mobile=#{userMobile}
+      </if>
+      <if test="userMail != null" >
+       and  user_mail=#{userMail}
+      </if>
+      <if test="userCode != null" >
+      and  user_code=#{userCode}
+      </if>
+      <if test="userSex != null" >
+      and  user_sex=#{userSex}
+      </if>
+      <if test="compId != null" >
+      and   comp_id=#{compId}
+      </if>
+       <if test="orderIndex != null" >
+      and order_index=#{orderIndex}
+      </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zq_org_user
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.OrgUser" >
+    insert into zq_org_user (id, dept_id, role_id, user_account, 
+      user_password, user_name, dept_manager, 
+      user_tel, user_fax, user_mobile, 
+      user_mail, order_index, user_code, 
+      user_sex, comp_id)
+    values (#{id,jdbcType=CHAR}, #{deptId,jdbcType=CHAR}, #{roleId,jdbcType=CHAR}, #{userAccount,jdbcType=CHAR}, 
+      #{userPassword,jdbcType=CHAR}, #{userName,jdbcType=CHAR}, #{deptManager,jdbcType=CHAR}, 
+      #{userTel,jdbcType=CHAR}, #{userFax,jdbcType=CHAR}, #{userMobile,jdbcType=CHAR}, 
+      #{userMail,jdbcType=CHAR}, #{orderIndex,jdbcType=BIGINT}, #{userCode,jdbcType=CHAR}, 
+      #{userSex,jdbcType=CHAR}, #{compId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.OrgUser" >
+    insert into zq_org_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="userAccount != null" >
+        user_account,
+      </if>
+      <if test="userPassword != null" >
+        user_password,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="deptManager != null" >
+        dept_manager,
+      </if>
+      <if test="userTel != null" >
+        user_tel,
+      </if>
+      <if test="userFax != null" >
+        user_fax,
+      </if>
+      <if test="userMobile != null" >
+        user_mobile,
+      </if>
+      <if test="userMail != null" >
+        user_mail,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="compId != null" >
+        comp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=CHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=CHAR},
+      </if>
+      <if test="userAccount != null" >
+        #{userAccount,jdbcType=CHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="deptManager != null" >
+        #{deptManager,jdbcType=CHAR},
+      </if>
+      <if test="userTel != null" >
+        #{userTel,jdbcType=CHAR},
+      </if>
+      <if test="userFax != null" >
+        #{userFax,jdbcType=CHAR},
+      </if>
+      <if test="userMobile != null" >
+        #{userMobile,jdbcType=CHAR},
+      </if>
+      <if test="userMail != null" >
+        #{userMail,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="compId != null" >
+        #{compId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.OrgUser" >
+    update zq_org_user
+    <set >
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=CHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=CHAR},
+      </if>
+      <if test="userAccount != null" >
+        user_account = #{userAccount,jdbcType=CHAR},
+      </if>
+      <if test="userPassword != null" >
+        user_password = #{userPassword,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="deptManager != null" >
+        dept_manager = #{deptManager,jdbcType=CHAR},
+      </if>
+      <if test="userTel != null" >
+        user_tel = #{userTel,jdbcType=CHAR},
+      </if>
+      <if test="userFax != null" >
+        user_fax = #{userFax,jdbcType=CHAR},
+      </if>
+      <if test="userMobile != null" >
+        user_mobile = #{userMobile,jdbcType=CHAR},
+      </if>
+      <if test="userMail != null" >
+        user_mail = #{userMail,jdbcType=CHAR},
+      </if>
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null" >
+        user_code = #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="compId != null" >
+        comp_id = #{compId,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.OrgUser" >
+    update zq_org_user
+    set dept_id = #{deptId,jdbcType=CHAR},
+      role_id = #{roleId,jdbcType=CHAR},
+      user_account = #{userAccount,jdbcType=CHAR},
+      user_password = #{userPassword,jdbcType=CHAR},
+      user_name = #{userName,jdbcType=CHAR},
+      dept_manager = #{deptManager,jdbcType=CHAR},
+      user_tel = #{userTel,jdbcType=CHAR},
+      user_fax = #{userFax,jdbcType=CHAR},
+      user_mobile = #{userMobile,jdbcType=CHAR},
+      user_mail = #{userMail,jdbcType=CHAR},
+      order_index = #{orderIndex,jdbcType=BIGINT},
+      user_code = #{userCode,jdbcType=CHAR},
+      user_sex = #{userSex,jdbcType=CHAR},
+      comp_id = #{compId,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

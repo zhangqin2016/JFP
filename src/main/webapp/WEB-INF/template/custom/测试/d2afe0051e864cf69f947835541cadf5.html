@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"/>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="/chajian/bootstrap-3.3.0-dist/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+<link href="/chajian/uploadify/uploadify.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="/zq_js/jquery/jquery-1.7.1.min.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/dist/js/bootstrap.min.js"></script><script type="text/javascript" src="/chajian/uploadify/jquery.uploadify.js"></script><script type="text/javascript" src="/chajian/bootstrap-3.3.0-dist/bootstrap3-validation.js"></script><script type="text/javascript" src="/chajian/My97DatePicker/WdatePicker.js"></script>
+<title></title>
+</head>
+<body>
+<form name="zq_form" id="zq_form">
+<table class="table table-bordered">
+<tr>
+<td></td><td>${csrq}</td>
+<td></td><td>${dh}</td>
+</tr>
+<tr>
+<td></td><td>${id}</td>
+<td></td><td>${update_user}</td>
+</tr>
+<tr>
+<td></td><td>${nl}</td>
+<td></td><td>${create_date}</td>
+</tr>
+<tr>
+<td></td><td>${update_date}</td>
+<td></td><td>${bind_id}</td>
+</tr>
+<tr>
+<td></td><td>${xm}</td>
+<td></td><td>${create_user}</td>
+</tr>
+</table>
+<button type='button' onclick='saveZqForm()'>保存</button></form><script type="text/javascript"> 
+	$(function() { 
+	$("#zq_form").validation();
+});                                           
+function saveZqForm(){  
+if ($("#zq_form").valid() == false) { 
+	alert('填写信息不完整。');                   
+	return false;                        
+}                                     
+var formObject=new Object();formObject.csrq=(zq_form.csrq.value==''?null:zq_form.csrq.value); 
+formObject.dh=(zq_form.dh.value==''?null:zq_form.dh.value); 
+formObject.id=(zq_form.id.value==''?null:zq_form.id.value); 
+formObject.update_user=(zq_form.update_user.value==''?null:zq_form.update_user.value); 
+formObject.nl=(zq_form.nl.value==''?null:zq_form.nl.value); 
+formObject.create_date=(zq_form.create_date.value==''?null:zq_form.create_date.value); 
+formObject.update_date=(zq_form.update_date.value==''?null:zq_form.update_date.value); 
+formObject.bind_id=(zq_form.bind_id.value==''?null:zq_form.bind_id.value); 
+formObject.xm=(zq_form.xm.value==''?null:zq_form.xm.value); 
+formObject.create_user=(zq_form.create_user.value==''?null:zq_form.create_user.value); 
+var formObjectJson = JSON.stringify(formObject);                 
+$.post("/run/form/save.zq", {  
+	formObjectJson :formObjectJson,                                 
+	form_id :'d2afe0051e864cf69f947835541cadf5'                                 
+}, function(data) {                           
+	alert(data);                                 
+});                                           
+}                                         
+</script>  
+
+</body>

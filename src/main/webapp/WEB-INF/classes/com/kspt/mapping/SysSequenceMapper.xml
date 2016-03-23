@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kspt.dao.SysSequenceMapper" >
+  <resultMap id="BaseResultMap" type="com.kspt.model.SysSequence" >
+    <id column="sequence_name" property="sequenceName" jdbcType="CHAR" />
+    <result column="sequence_value" property="sequenceValue" jdbcType="DECIMAL" />
+    <result column="sequence_step" property="sequenceStep" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sequence_name, sequence_value, sequence_step
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_sequence
+    where sequence_name = #{sequenceName,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_sequence
+    where sequence_name = #{sequenceName,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.kspt.model.SysSequence" >
+    insert into sys_sequence (sequence_name, sequence_value, sequence_step
+      )
+    values (#{sequenceName,jdbcType=CHAR}, #{sequenceValue,jdbcType=DECIMAL}, #{sequenceStep,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kspt.model.SysSequence" >
+    insert into sys_sequence
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sequenceName != null" >
+        sequence_name,
+      </if>
+      <if test="sequenceValue != null" >
+        sequence_value,
+      </if>
+      <if test="sequenceStep != null" >
+        sequence_step,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sequenceName != null" >
+        #{sequenceName,jdbcType=CHAR},
+      </if>
+      <if test="sequenceValue != null" >
+        #{sequenceValue,jdbcType=DECIMAL},
+      </if>
+      <if test="sequenceStep != null" >
+        #{sequenceStep,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kspt.model.SysSequence" >
+    update sys_sequence
+    <set >
+      <if test="sequenceValue != null" >
+        sequence_value = #{sequenceValue,jdbcType=DECIMAL},
+      </if>
+      <if test="sequenceStep != null" >
+        sequence_step = #{sequenceStep,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where sequence_name = #{sequenceName,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kspt.model.SysSequence" >
+    update sys_sequence
+    set sequence_value = #{sequenceValue,jdbcType=DECIMAL},
+      sequence_step = #{sequenceStep,jdbcType=DECIMAL}
+    where sequence_name = #{sequenceName,jdbcType=CHAR}
+  </update>
+</mapper>
