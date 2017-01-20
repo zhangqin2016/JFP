@@ -11,7 +11,7 @@ import com.kspt.common.dao.daoImp.BaseDaoImp;
 import com.kspt.model.ZqNav;
 import com.kspt.util.DataConnomImpl;
 
-@Service("sysSequenceMapper")
+@Service("zqNavMapper")
 public class ZqNavMapperImp implements ZqNavMapper{
 	private static final String KEY="com.kspt.dao.SysSequenceMapper";
 	@Resource
