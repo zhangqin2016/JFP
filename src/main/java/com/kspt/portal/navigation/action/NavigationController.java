@@ -34,12 +34,7 @@ public class NavigationController {
 	private NavSecondMapper navSecondMapper;
 	@Resource 
 	private NavThreeMapper navThreeMapper;
-	@RequestMapping
-	public String getMainPage(){
-		
-		return "daohang/navigation_first";
-	}
-	
+
 	@RequestMapping(value="/gridJson",method={RequestMethod.POST,RequestMethod.GET})
 	public @ResponseBody String getgridJson(){
 			List<NavFirst>ln=navFirstMapper.selectBySelective(new NavFirst());
